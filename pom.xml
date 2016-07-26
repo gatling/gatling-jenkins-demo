@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.gatling.training</groupId>
+	<artifactId>gatling-training</artifactId>
+	<version>2.2.2</version>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<scala.version>2.11.8</scala.version>
+		<encoding>UTF-8</encoding>
+
+		<gatling.version>2.2.2</gatling.version>
+		<gatling-maven-plugin.version>2.2.0</gatling-maven-plugin.version>
+		<scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.gatling</groupId>
+			<artifactId>gatling-recorder</artifactId>
+			<version>${gatling.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>scala-maven-plugin</artifactId>
+					<version>${scala-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>io.gatling</groupId>
+					<artifactId>gatling-maven-plugin</artifactId>
+					<version>${gatling-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<args>
+								<arg>-target:jvm-1.8</arg>
+								<arg>-deprecation</arg>
+								<arg>-feature</arg>
+								<arg>-unchecked</arg>
+								<arg>-language:implicitConversions</arg>
+								<arg>-language:postfixOps</arg>
+							</args>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
