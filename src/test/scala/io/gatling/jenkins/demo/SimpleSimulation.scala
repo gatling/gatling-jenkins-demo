@@ -6,7 +6,7 @@ import io.gatling.http.Predef._
 class SimpleSimulation extends Simulation {
 
   val httpProtocol =
-    http.baseURL("http://computer-database.gatling.io")
+    http.baseUrl("http://computer-database.gatling.io")
 
   val scn = scenario("Simple")
     .exec(
