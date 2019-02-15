@@ -8,7 +8,7 @@ import io.gatling.http.Predef._
 class SimpleSimulation extends Simulation {
 
   val httpProtocol =
-    http.baseURL("http://computer-database.gatling.io")
+    http.baseUrl("http://computer-database.gatling.io")
 
   val scn = scenario("Simple")
     .exec(
@@ -18,5 +18,5 @@ class SimpleSimulation extends Simulation {
     scn.inject(
       atOnceUsers(1)))
     .protocols(httpProtocol)
-    .assertions(global.responseTime.max.lessThan(ThreadLocalRandom.current.nextInt(100)))
+    .assertions(global.responseTime.max.lte(ThreadLocalRandom.current.nextInt(100)))
 }
